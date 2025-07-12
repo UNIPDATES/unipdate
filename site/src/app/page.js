@@ -532,7 +532,7 @@ const HomePage = () => {
                   transition={{ duration: 0.5, delay: testimonial.delay }}
                   className="bg-unilight-card dark:bg-unidark-card p-6 rounded-2xl shadow-md border border-unilight-border-rose-200 dark:border-unidark-border-rose-30"
                 >
-                  <div className="text-unilight-accent-amber dark:text-unidark-accent-gold text-3xl mb-4">"</div>
+                  <div className="text-unilight-accent-amber dark:text-unidark-accent-gold text-3xl mb-4">&quot;</div>
                   <p className="text-lg italic text-unilight-text-700 dark:text-unidark-text-200 mb-6">{testimonial.quote}</p>
                   <p className="text-unilight-accent-red dark:text-unidark-accent-red font-medium">— {testimonial.name}</p>
                 </motion.div>
