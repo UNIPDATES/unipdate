@@ -10,6 +10,7 @@ const navLinks = [
   { href: '/', label: 'Home', icon: '🏠' },
   { href: '/notes', label: 'Notes', icon: '📚' },
   { href: '/internships', label: 'Internships', icon: '💼' },
+  { href: '/#announcements', label: 'Global Updates', icon: '🌍' },
 ];
 
 const isActiveTab = (pathname, href) => {
