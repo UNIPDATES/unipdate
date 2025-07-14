@@ -45,6 +45,17 @@ export const POST = adminAuthMiddleware(async (req) => {
       publicId: result.public_id, // Useful for later deletion
     }, { status: 200 });
 
+
+
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '10mb', // increase to what you need ('20mb', '25mb', etc.)
+    },
+  },
+};
+
+
   } catch (error) {
     console.error("Cloudinary Upload API error:", error);
     return NextResponse.json({ message: `Failed to upload file: ${error.message}` }, { status: 500 });
