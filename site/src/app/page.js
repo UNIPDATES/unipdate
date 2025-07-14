@@ -290,37 +290,37 @@ const HomePage = () => {
 
   return (
     <>
-      {/* Complete Profile Modal */}
+{/* Complete Profile Modal */}
       {showCompleteProfileModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg w-full max-w-md shadow-lg">
-            <h2 className="text-xl font-bold mb-4">Complete Your Profile</h2>
-            {profileError && <p className="text-red-500 text-sm mb-2">{profileError}</p>}
+          <div className="bg-unilight-card dark:bg-unidark-card p-6 rounded-lg w-full max-w-md shadow-lg border border-unilight-border-gray-200 dark:border-unidark-border-gold-10">
+            <h2 className="text-xl font-bold mb-4 text-unilight-text-800 dark:text-unidark-text-100">Complete Your Profile</h2>
+            {profileError && <p className="text-unilight-accent-red dark:text-unidark-accent-red text-sm mb-2">{profileError}</p>}
 
             <div className="mb-4">
-              <label className="block font-medium mb-1">Passout Year</label>
+              <label className="block font-medium mb-1 text-unilight-text-700 dark:text-unidark-text-200">Passout Year</label>
               <input
                 type="number"
                 value={passoutYear}
                 onChange={(e) => setPassoutYear(e.target.value)}
-                className="w-full border p-2 rounded"
+                className="w-full border border-unilight-border-gray-200 dark:border-unidark-border-gold-10 p-2 rounded-md bg-unilight-bg dark:bg-unidark-bg text-unilight-text-700 dark:text-unidark-text-200 placeholder-unilight-text-400 dark:placeholder-unidark-text-500 focus:outline-none focus:ring-2 focus:ring-unilight-accent-amber dark:focus:ring-unidark-accent-gold transition-colors"
                 placeholder="e.g. 2025"
               />
             </div>
 
             <div className="mb-4">
-              <label className="block font-medium mb-1">Select College</label>
+              <label className="block font-medium mb-1 text-unilight-text-700 dark:text-unidark-text-200">Select College</label>
               {collegeLoading ? (
-                <p className="text-sm text-gray-500">Loading colleges...</p>
+                <p className="text-sm text-unilight-text-500 dark:text-unidark-text-400">Loading colleges...</p>
               ) : (
                 <select
                   value={college}
                   onChange={(e) => setCollege(e.target.value)}
-                  className="w-full border p-2 rounded"
+                  className="w-full border border-unilight-border-gray-200 dark:border-unidark-border-gold-10 p-2 rounded-md bg-unilight-bg dark:bg-unidark-bg text-unilight-text-700 dark:text-unidark-text-200 focus:outline-none focus:ring-2 focus:ring-unilight-accent-amber dark:focus:ring-unidark-accent-gold transition-colors"
                 >
-                  <option value="">-- Select College --</option>
+                  <option value="" className="bg-unilight-bg dark:bg-unidark-bg">-- Select College --</option>
                   {collegeList.map((col) => (
-                    <option key={col._id} value={col.name}>
+                    <option key={col._id} value={col.name} className="bg-unilight-bg dark:bg-unidark-bg">
                       {col.name}
                     </option>
                   ))}
@@ -330,7 +330,7 @@ const HomePage = () => {
 
             <button
               onClick={handleProfileSubmit}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
+              className="bg-unilight-accent-amber dark:bg-unidark-accent-gold text-white px-4 py-2 rounded-lg hover:bg-unilight-accent-amber-400 dark:hover:bg-unidark-accent-gold-30 w-full font-medium shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={savingProfile}
             >
               {savingProfile ? 'Saving...' : 'Save & Continue'}
