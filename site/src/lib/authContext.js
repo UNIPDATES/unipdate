@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
     setAccessToken(token);
     setUser(userData);
     localStorage.setItem('accessToken', token);
+    window.location.reload();
   }, []);
 
   // Logout function
