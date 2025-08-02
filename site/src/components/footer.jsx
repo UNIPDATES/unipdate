@@ -85,7 +85,7 @@ const Footer = () => {
             <li><Link href="/privacy" className="text-unidark-text-400 hover:text-unidark-accent-gold transition-colors duration-200">Privacy Policy</Link></li>
             <li><Link href="/terms" className="text-unidark-text-400 hover:text-unidark-accent-gold transition-colors duration-200">Terms of Service</Link></li>
             <li><Link href="/sitemap" className="text-unidark-text-400 hover:text-unidark-accent-gold transition-colors duration-200">Sitemap</Link></li>
-            <li><Link href="/admin" className="text-unidark-text-400 hover:text-unidark-accent-gold transition-colors duration-200">Admin Panel</Link></li>
+            {/* <li><Link href="/admin" className="text-unidark-text-400 hover:text-unidark-accent-gold transition-colors duration-200">Admin Panel</Link></li> */}
           </ul>
         </div>
 
@@ -108,7 +108,7 @@ const Footer = () => {
           </p>
           <p className="text-unidark-text-400 text-sm mb-2 flex items-center">
             <Mail className="w-4 h-4 mr-2 text-unidark-accent-gold" />
-            Email: <a href="unipdates@gmail.com" className="hover:text-unidark-accent-gold transition-colors duration-200 ml-1">unipdates@gmail.com</a>
+            Email: <a href="mailto:unipdates@gmail.com" className="hover:text-unidark-accent-gold transition-colors duration-200 ml-1">unipdates@gmail.com</a>
           </p>
           <p className="text-unidark-text-400 text-sm mb-2 flex items-center">
             <Phone className="w-4 h-4 mr-2 text-unidark-accent-gold" />
