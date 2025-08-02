@@ -365,7 +365,7 @@ const DashboardPage = () => {
             <PlusCircle className="w-8 h-8 mr-3 text-green-600" /> Quick Actions
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <DashboardLink href="/uni-updates" icon={<University />} text="Manage University Updates" />
+            <DashboardLink href="/uniupdates" icon={<University />} text="Manage University Updates" />
             <DashboardLink href="/contacts" icon={<Mail />} text="Manage Contacts" />
             <DashboardLink href="/support" icon={<LifeBuoy />} text="Manage Support" />
           </div>
