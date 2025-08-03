@@ -797,7 +797,25 @@ const getButtonClasses = (type, currentFilter) => {
                           </motion.button>
                         </div>
 
-                        <p className="text-unilight-text-600 dark:text-unidark-text-300 mb-4">{update.shortDescription}</p>
+                        {/* <p className="text-unilight-text-600 dark:text-unidark-text-300 mb-4">{update.shortDescription}</p> */}
+                        <div
+                          className="text-unilight-text-600 dark:text-unidark-text-300 mb-4"
+                          dangerouslySetInnerHTML={{
+                            __html: update.shortDescription
+                              .replace(
+                                /(https?:\/\/[^\s]+|www\.[^\s]+)/g,
+                                (url) => {
+                                  const href = url.startsWith('www.') ? `//${url}` : url;
+                                  return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-unilight-accent-amber dark:text-unidark-accent-gold hover:underline">${url}</a>`;
+                                }
+                              )
+                              .replace(/(<\/a>)\s+(<a)/g, '$1<br />$2'),
+                          }}
+                        />
+
+
+
+
 
                         <AnimatePresence>
                           {expandedUpdateId === update._id && (
@@ -807,9 +825,25 @@ const getButtonClasses = (type, currentFilter) => {
                               exit={{ opacity: 0, height: 0 }}
                               transition={{ duration: 0.3 }}
                               className="overflow-hidden"
-                            >
+                            // >
+                            //   <div className="mt-4 pt-4 border-t border-unilight-border-gray-200 dark:border-unidark-border-gold-10">
+                            //     <p className="text-unilight-text-700 dark:text-unidark-text-200 mb-6 whitespace-pre-line">{update.content}</p>
+                        >
+                              {/* **MODIFICATION START** */}
                               <div className="mt-4 pt-4 border-t border-unilight-border-gray-200 dark:border-unidark-border-gold-10">
-                                <p className="text-unilight-text-700 dark:text-unidark-text-200 mb-6 whitespace-pre-line">{update.content}</p>
+                             <div
+                                  className="text-unilight-text-700 dark:text-unidark-text-200 mb-6 whitespace-pre-line"
+                                 dangerouslySetInnerHTML={{
+                                    __html: update.content.replace(
+                                      /(https?:\/\/[^\s]+|www\.[^\s]+)/g,
+                                      (url) => {
+                                        const href = url.startsWith('www.') ? `//${url}` : url;
+                                        return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-unilight-accent-amber dark:text-unidark-accent-gold hover:underline">${url}</a>`;
+                                      }
+                                    ),
+                                  }}
+                                />
+
 
                                 {update.mainImg && (
                                   <motion.img
