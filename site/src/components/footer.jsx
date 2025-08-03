@@ -5,7 +5,7 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion'; // For subtle animations
 import { useTheme } from 'next-themes'; // To ensure theme consistency, though footer is dark-only
-import { Facebook, Twitter, Linkedin, Youtube, Mail, Phone, MapPin } from 'lucide-react'; // Lucide icons for social media and contact info
+import { Facebook, Twitter, Linkedin, Youtube, Mail, Phone, MapPin, Instagram } from 'lucide-react'; // Lucide icons for social media and contact info
 // import { IconHandshake } from "tabler-icons-react";
 
 const Footer = () => {
@@ -26,17 +26,29 @@ const Footer = () => {
           </p>
           <div className="flex space-x-4">
             {/* Social Media Icons using Lucide */}
-            <motion.a
+            {/* <motion.a
               href="#"
+              target='_blank'
               whileHover={{ scale: 1.2, color: '#FFD301' }} // Gold accent on hover
               transition={{ duration: 0.2 }}
               className="text-unidark-text-400"
               aria-label="Facebook"
             >
               <Facebook className="w-6 h-6" />
+            </motion.a> */}
+            <motion.a
+              href="https://www.instagram.com/unipdates/"
+              target='_blank'
+              whileHover={{ scale: 1.2, color: '#FFD301' }}
+              transition={{ duration: 0.2 }}
+              className="text-unidark-text-400"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-6 h-6" />
             </motion.a>
             <motion.a
-              href="#"
+              href="https://x.com/unipdates"
+              target='_blank'
               whileHover={{ scale: 1.2, color: '#FFD301' }}
               transition={{ duration: 0.2 }}
               className="text-unidark-text-400"
@@ -44,17 +56,19 @@ const Footer = () => {
             >
               <Twitter className="w-6 h-6" />
             </motion.a>
-            <motion.a
+            {/* <motion.a
               href="#"
+              target='_blank'
               whileHover={{ scale: 1.2, color: '#FFD301' }}
               transition={{ duration: 0.2 }}
               className="text-unidark-text-400"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-6 h-6" />
-            </motion.a>
+            </motion.a> */}
             <motion.a
-              href="#"
+              href="https://www.youtube.com/@Unipdates"
+              target='_blank'
               whileHover={{ scale: 1.2, color: '#FFD301' }}
               transition={{ duration: 0.2 }}
               className="text-unidark-text-400"
