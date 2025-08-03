@@ -514,7 +514,7 @@ const UniUpdateForm = ({ type, update, showMessage, refreshData, colleges, isSup
 
       if (adminUser.role === 'uniadmin') {
         payload.uniId = adminUser.college; // Uniadmin's college ID
-        payload.uniName = colleges.find(c => c._id === adminUser.college)?.name || 'Unknown University'; // Get uni name
+        payload.uniName = colleges.find(c => c._id === adminUser.college)?.name || ''; // Get uni name
       } else if (isSuperadmin) {
         // Superadmin must have selected uniId and uniName from the form
         if (!payload.uniId || !payload.uniName) {

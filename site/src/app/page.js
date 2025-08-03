@@ -236,6 +236,21 @@ useEffect(() => {
 
   // Toggle expansion of an update item
   const toggleExpand = (id) => setExpandedUpdateId(expandedUpdateId === id ? null : id);
+  const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
+
+const FilterIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+    <path fillRule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clipRule="evenodd" />
+  </svg>
+);
+
+// A helper function to avoid repeating class names
+const getButtonClasses = (type, currentFilter) => {
+  if (type === currentFilter) {
+    return 'bg-unilight-accent-amber dark:bg-unidark-accent-gold text-white';
+  }
+  return 'bg-unilight-card dark:bg-unidark-card hover:bg-unilight-card-amber-50 dark:hover:bg-unidark-card-alt border border-unilight-border-gray-200 dark:border-unidark-border-gold-10 text-unilight-text-700 dark:text-unidark-text-200';
+};
 
   // Loading state UI
   if (authLoading || loadingFeatured || (isAuthenticated && loadingAnnouncements)) {
@@ -639,41 +654,80 @@ useEffect(() => {
               id="announcements"
               className="mt-12"
             >
+              {/* The main container is now a flexbox to keep items on one line */}
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-unilight-text-800 dark:text-unidark-text-200">Latest Announcements</h2> {/* Updated text color */}
-                <div className="flex space-x-2">
+                <h2 className="text-2xl font-bold text-unilight-text-800 dark:text-unidark-text-200">
+                  Latest Announcements
+                </h2>
+
+                {/* Desktop: Visible on medium screens and up */}
+                <div className="hidden md:flex space-x-2">
                   <button 
                     onClick={() => setFilterType('all')}
-                    className={`px-3 py-1 rounded-lg text-sm shadow transition-colors ${
-                      filterType === 'all' 
-                        ? 'bg-unilight-accent-amber dark:bg-unidark-accent-gold text-white' 
-                        : 'bg-unilight-card dark:bg-unidark-card hover:bg-unilight-card-amber-50 dark:hover:bg-unidark-card-alt border border-unilight-border-gray-200 dark:border-unidark-border-gold-10 text-unilight-text-700 dark:text-unidark-text-200'
-                    }`}
+                    className={`px-3 py-1 rounded-lg text-sm shadow transition-colors ${getButtonClasses('all', filterType)}`}
                   >
                     All
                   </button>
                   <button 
                     onClick={() => setFilterType('university')}
-                    className={`px-3 py-1 rounded-lg text-sm shadow transition-colors ${
-                      filterType === 'university' 
-                        ? 'bg-unilight-accent-amber dark:bg-unidark-accent-gold text-white' 
-                        : 'bg-unilight-card dark:bg-unidark-card hover:bg-unilight-card-amber-50 dark:hover:bg-unidark-card-alt border border-unilight-border-gray-200 dark:border-unidark-border-gold-10 text-unilight-text-700 dark:text-unidark-text-200'
-                    }`}
+                    className={`px-3 py-1 rounded-lg text-sm shadow transition-colors ${getButtonClasses('university', filterType)}`}
                   >
                     University
                   </button>
                   <button 
                     onClick={() => setFilterType('global')}
-                    className={`px-3 py-1 rounded-lg text-sm shadow transition-colors ${
-                      filterType === 'global' 
-                        ? 'bg-unilight-accent-amber dark:bg-unidark-accent-gold text-white' 
-                        : 'bg-unilight-card dark:bg-unidark-card hover:bg-unilight-card-amber-50 dark:hover:bg-unidark-card-alt border border-unilight-border-gray-200 dark:border-unidark-border-gold-10 text-unilight-text-700 dark:text-unidark-text-200'
-                    }`}
+                    className={`px-3 py-1 rounded-lg text-sm shadow transition-colors ${getButtonClasses('global', filterType)}`}
                   >
                     Global
                   </button>
                 </div>
+
+                {/* Mobile: Visible only on small screens */}
+                <div className="relative md:hidden">
+                  <button
+                    onClick={() => setIsFilterMenuOpen(!isFilterMenuOpen)}
+                    className="p-2 rounded-lg border border-unilight-border-gray-200 dark:border-unidark-border-gold-10 bg-unilight-card dark:bg-unidark-card text-unilight-text-700 dark:text-unidark-text-200"
+                    aria-label="Open filter menu"
+                  >
+                    <FilterIcon />
+                  </button>
+
+                  {/* Dropdown Menu */}
+                  {isFilterMenuOpen && (
+                    <div
+                      className="absolute right-0 mt-2 w-48 bg-unilight-card dark:bg-unidark-card-alt rounded-md shadow-lg z-20 border border-unilight-border-gray-200 dark:border-unidark-border-gold-10"
+                    >
+                      <ul className="py-1">
+                        <li>
+                          <button
+                            onClick={() => { setFilterType('all'); setIsFilterMenuOpen(false); }}
+                            className={`w-full text-left px-4 py-2 text-sm transition-colors ${filterType === 'all' ? 'font-bold text-unilight-accent-amber dark:text-unidark-accent-gold' : 'text-unilight-text-700 dark:text-unidark-text-200'} hover:bg-unilight-card-amber-50 dark:hover:bg-unidark-card`}
+                          >
+                            All
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            onClick={() => { setFilterType('university'); setIsFilterMenuOpen(false); }}
+                            className={`w-full text-left px-4 py-2 text-sm transition-colors ${filterType === 'university' ? 'font-bold text-unilight-accent-amber dark:text-unidark-accent-gold' : 'text-unilight-text-700 dark:text-unidark-text-200'} hover:bg-unilight-card-amber-50 dark:hover:bg-unidark-card`}
+                          >
+                            University
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            onClick={() => { setFilterType('global'); setIsFilterMenuOpen(false); }}
+                            className={`w-full text-left px-4 py-2 text-sm transition-colors ${filterType === 'global' ? 'font-bold text-unilight-accent-amber dark:text-unidark-accent-gold' : 'text-unilight-text-700 dark:text-unidark-text-200'} hover:bg-unilight-card-amber-50 dark:hover:bg-unidark-card`}
+                          >
+                            Global
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
               </div>
+
 
               {errorAnnouncements && (
                 <motion.div
